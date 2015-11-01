@@ -1,0 +1,550 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report_atp01" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="40" bottomMargin="20" isFloatColumnFooter="true" uuid="4d68a5ea-2364-4f3e-a08e-22d29b53c544">
+	<property name="ireport.zoom" value="1.0881456789507438"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="96"/>
+	<subDataset name="sum_total" uuid="cf979b5b-2986-4352-9f17-d5f189b153fa">
+		<queryString language="SQL">
+			<![CDATA[SELECT * from export]]>
+		</queryString>
+		<field name="code_ex" class="java.lang.Object"/>
+		<field name="code_cust_ex" class="java.lang.Object"/>
+		<field name="date_ex" class="java.lang.Object"/>
+		<field name="tax_ex" class="java.lang.Object"/>
+		<field name="total_ex" class="java.lang.Object"/>
+		<field name="paid_ex" class="java.lang.Object"/>
+		<field name="own_ex" class="java.lang.Object"/>
+		<field name="total_text_ex" class="java.lang.Object"/>
+		<field name="code_empl_ex" class="java.lang.Object"/>
+		<field name="note_ex" class="java.lang.Object"/>
+		<field name="user_ex" class="java.lang.Object"/>
+	</subDataset>
+	<queryString>
+		<![CDATA[SELECT * FROM export INNER JOIN customer ON code_cust_ex = code_cust  INNER JOIN export_detail ON code_ex = code_ex_exdt INNER JOIN product_information ON code_prod_exdt = code_prod ORDER BY code_ex]]>
+	</queryString>
+	<field name="code_ex" class="java.lang.Object"/>
+	<field name="code_cust_ex" class="java.lang.Object"/>
+	<field name="date_ex" class="java.lang.Object"/>
+	<field name="tax_ex" class="java.lang.Object"/>
+	<field name="total_ex" class="java.lang.Object"/>
+	<field name="paid_ex" class="java.lang.Object"/>
+	<field name="own_ex" class="java.lang.Object"/>
+	<field name="total_text_ex" class="java.lang.Object"/>
+	<field name="code_empl_ex" class="java.lang.Object"/>
+	<field name="note_ex" class="java.lang.Object"/>
+	<field name="user_ex" class="java.lang.Object"/>
+	<field name="code_cust" class="java.lang.Object"/>
+	<field name="name_cust" class="java.lang.Object"/>
+	<field name="add_cust" class="java.lang.Object"/>
+	<field name="district_cust" class="java.lang.Object"/>
+	<field name="province_cust" class="java.lang.Object"/>
+	<field name="company_cust" class="java.lang.Object"/>
+	<field name="phone_cust" class="java.lang.Object"/>
+	<field name="fax_cust" class="java.lang.Object"/>
+	<field name="email_cust" class="java.lang.Object"/>
+	<field name="note_cust" class="java.lang.Object"/>
+	<field name="user_cust" class="java.lang.Object"/>
+	<field name="code_exdt" class="java.lang.Object"/>
+	<field name="code_ex_exdt" class="java.lang.Object"/>
+	<field name="code_prod_exdt" class="java.lang.Object"/>
+	<field name="specification_exdt" class="java.lang.Object"/>
+	<field name="no_exdt" class="java.lang.Object"/>
+	<field name="weight_exdt" class="java.lang.Object"/>
+	<field name="unit_exdt" class="java.lang.Object"/>
+	<field name="price_exdt" class="java.lang.Object"/>
+	<field name="monetize_exdt" class="java.lang.Object"/>
+	<field name="user_exdt" class="java.lang.Object"/>
+	<field name="code_prod" class="java.lang.Object"/>
+	<field name="name_prod" class="java.lang.Object"/>
+	<field name="original_prod" class="java.lang.Object"/>
+	<field name="unit_prod" class="java.lang.Object"/>
+	<field name="descript_prod" class="java.lang.Object"/>
+	<field name="price_prod" class="java.lang.Object"/>
+	<field name="note_prod" class="java.lang.Object"/>
+	<field name="user_prod" class="java.lang.Object"/>
+	<variable name="name_cust_1" class="java.lang.Integer" resetType="Column" calculation="Count">
+		<variableExpression><![CDATA[$F{name_cust}]]></variableExpression>
+	</variable>
+	<variable name="count_code_ex" class="java.lang.Integer" incrementType="Group" incrementGroup="code_ex" calculation="Count">
+		<variableExpression><![CDATA[$V{code_ex_COUNT}+1]]></variableExpression>
+		<initialValueExpression><![CDATA[1]]></initialValueExpression>
+	</variable>
+	<variable name="sum_total" class="java.lang.Number" calculation="Sum">
+		<variableExpression><![CDATA[$F{monetize_exdt}]]></variableExpression>
+	</variable>
+	<group name="code_ex">
+		<groupExpression><![CDATA[$F{code_ex}]]></groupExpression>
+		<groupFooter>
+			<band>
+				<line>
+					<reportElement x="2" y="-1" width="552" height="1" uuid="5f9baa63-f038-410b-9011-5a2daa334466"/>
+				</line>
+			</band>
+		</groupFooter>
+	</group>
+	<title>
+		<band height="55" splitType="Stretch">
+			<staticText>
+				<reportElement x="59" y="0" width="316" height="18" uuid="1b6fe36f-421c-4be3-be3b-6823b3f550a4"/>
+				<textElement>
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CÔNG TY TNHH MTV AN THÁI PHÚ]]></text>
+			</staticText>
+			<image>
+				<reportElement x="2" y="2" width="50" height="50" uuid="9761b4b8-ace4-4060-be67-b00d9ca259ea"/>
+				<imageExpression><![CDATA["database/logo30x30.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="59" y="18" width="453" height="12" uuid="2eed7916-422c-4a1e-9d60-e4f9eb8cadf1"/>
+				<textElement>
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<text><![CDATA[ĐC: 30/14 Đương ĐT743, Bình Phước, Bình Chuẩn, Thuận An, Bình Dương, Việt Nam]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="59" y="42" width="453" height="12" uuid="cbf5ba4e-b3b1-459f-988d-e2f36273f950"/>
+				<textElement>
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<text><![CDATA[DT: +84 065 037 984 12 - +84 065 037 984 11     ||    Fax: +84 065 037 984 10]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="59" y="30" width="453" height="12" uuid="7c940cf1-13db-4c6a-892e-415607afed9c"/>
+				<textElement>
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<text><![CDATA[CS2: 1000, Hương Lộ II, Bình Tân, Hồ Chí Minh, Việt Nam]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="93" splitType="Stretch">
+			<textField>
+				<reportElement x="93" y="36" width="444" height="16" uuid="f9aad85b-5960-460f-bcda-963396e3067f"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{name_cust}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="150" y="10" width="210" height="20" uuid="98d34878-b845-4e10-9611-18f37fac28f7"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[BẢNG ĐỐI CHIẾU CÔNG NỢ THÁNG ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="52" width="89" height="16" uuid="09341911-35d3-4418-955b-acdb77d2df67"/>
+				<textElement>
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[Địa chỉ: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="68" width="89" height="16" uuid="eb049833-1046-40bf-bf92-b2b861c30db7"/>
+				<textElement>
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[Điện thoại: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="93" y="52" width="444" height="16" uuid="df6927a0-e947-433a-a38d-0fbe88d23388"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{add_cust}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="93" y="68" width="444" height="16" uuid="c423062c-3694-4b45-b486-9d1b1a6b12d4"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{phone_cust}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="365" y="10" width="31" height="20" uuid="e95cd1ab-3fcb-413c-96ae-8951bc8a7146"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{date_ex}.substring(5,7)]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="2" y="36" width="89" height="16" uuid="6de06b02-6ee2-4be8-977d-98589077a405"/>
+				<textElement>
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[Tên khách hàng:]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="32" splitType="Stretch">
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="21" height="16" uuid="8b0611da-dfe6-4d33-bfbd-879eb6a78951"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ TT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="22" y="3" width="74" height="16" uuid="cb42b218-efbb-4061-bfa6-8452e0788da1"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ Mã Phiếu xuất]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="164" y="3" width="68" height="16" uuid="3b14ec6b-b7e5-43be-a724-edc3884cf26d"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tên sản phẩm]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="237" y="3" width="70" height="16" uuid="57fa119f-0827-4893-bdce-e3301bf2e9b5"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Quy cách]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="309" y="3" width="21" height="16" uuid="666062ad-2f45-4344-89c8-fa83f73096be"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ No.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="333" y="3" width="65" height="16" uuid="61f0816a-aa40-4e2e-8345-7b29691e1d37"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ Trọng lượng]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="398" y="3" width="68" height="16" uuid="a0eb3ae4-ac65-4325-8d75-6fd1b7ad6d82"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ Đơn giá]]></text>
+			</staticText>
+			<line>
+				<reportElement x="22" y="3" width="1" height="28" uuid="eb2f6141-df80-4981-9d08-fae5c8f99218"/>
+			</line>
+			<line>
+				<reportElement x="235" y="3" width="1" height="28" uuid="250186dc-0bc4-4bfe-9efd-002e0481b0e1"/>
+			</line>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="467" y="3" width="87" height="16" uuid="848307b2-48eb-4297-9850-fef01124ba4f"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Thành tiền]]></text>
+			</staticText>
+			<line>
+				<reportElement x="331" y="3" width="1" height="28" uuid="e0642125-56ac-44fe-b9af-657ec1e1fca9"/>
+			</line>
+			<line>
+				<reportElement x="397" y="3" width="1" height="28" uuid="4dfc0c6f-e0f4-4e13-baec-f14cbafa7254"/>
+			</line>
+			<line>
+				<reportElement x="162" y="3" width="1" height="28" uuid="4b81096e-75de-435d-a0c1-4f98c5b29115"/>
+			</line>
+			<line>
+				<reportElement x="554" y="2" width="1" height="30" uuid="3887bc95-68bd-4f3b-8b86-3f573de863e5"/>
+			</line>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="2" width="555" height="1" uuid="c433216d-1569-457b-b4d0-2fc862f821c8"/>
+			</line>
+			<line>
+				<reportElement x="308" y="3" width="1" height="28" uuid="2fc20952-ece7-40fa-9ba0-94bfaf792553"/>
+			</line>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="31" width="554" height="1" uuid="381edfc4-8f8b-4bf9-adff-b4eef8ddb0a9"/>
+			</line>
+			<line>
+				<reportElement x="0" y="3" width="1" height="28" uuid="3e1d2e07-5f8c-4cd7-b613-1e54ec23d624"/>
+			</line>
+			<line>
+				<reportElement x="466" y="3" width="1" height="28" uuid="665bb9b7-6fd9-464f-a014-39ecc855d1f3"/>
+			</line>
+			<staticText>
+				<reportElement x="478" y="18" width="64" height="12" uuid="57fb6f89-0266-4e65-baad-d383e60ef4d5"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[(F * G)]]></text>
+			</staticText>
+			<line>
+				<reportElement x="96" y="3" width="1" height="28" uuid="755d6484-0bfd-4496-9fcf-c59f74877433"/>
+			</line>
+			<staticText>
+				<reportElement x="102" y="3" width="60" height="16" uuid="b1b2bf96-52fc-4b1f-90f4-054cfadbabff"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ngày xuất]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="400" y="18" width="64" height="12" uuid="d822dded-83d5-483f-ab65-71e2b8595655"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[(G)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="333" y="18" width="62" height="12" uuid="933c532e-a201-49ec-9a81-348f7fbebf73"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[(F)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="240" y="18" width="62" height="12" uuid="39a4df5d-09da-4db6-b5f1-f348eaa0e011"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[(D)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="167" y="18" width="62" height="12" uuid="1f13f4ce-d62e-4cbf-8642-9cf45ac073ea"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[(C)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="99" y="18" width="62" height="12" uuid="4f53060a-f1cb-4d73-971f-b31bf22a84e5"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[(B)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="29" y="18" width="62" height="12" uuid="4693ee63-d3c0-4080-89af-36dab2a20d9b"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[(A)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="312" y="18" width="16" height="12" uuid="ee02e2bc-8587-4c09-ac49-ecc26761babe"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[(E)]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="17" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="1" y="16" width="554" height="1" uuid="b33f2d58-1076-44ef-8a1c-e864f42c7d87"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement positionType="FixRelativeToBottom" x="166" y="0" width="68" height="16" uuid="a0fac1ee-8ace-4030-b91c-833690bc06bc"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{name_prod}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="FixRelativeToBottom" x="237" y="0" width="70" height="16" uuid="08adf39a-96b0-415b-8184-7bd844261970"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="11"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{specification_exdt}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="FixRelativeToBottom" x="309" y="0" width="21" height="16" uuid="d1820f10-abbc-4a55-8cce-03bf40fee20a"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="11"/>
+					<paragraph rightIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{no_exdt}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="FixRelativeToBottom" x="333" y="0" width="62" height="16" uuid="0b56d20d-bfa9-4592-b375-5f60b4633bdf"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{weight_exdt}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="235" y="-1" width="1" height="18" uuid="24234916-1310-4ed9-8245-89ef7c3a2fe2"/>
+			</line>
+			<line>
+				<reportElement x="308" y="0" width="1" height="16" uuid="414def58-b51b-4ee9-b59c-9e7d835838e9"/>
+			</line>
+			<textField>
+				<reportElement x="2" y="0" width="19" height="16" uuid="7bbf1900-e7c0-4973-895e-188112317e32">
+					<printWhenExpression><![CDATA[$V{code_ex_COUNT}<2]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$V{count_code_ex}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="FixRelativeToBottom" x="25" y="0" width="68" height="16" uuid="b5126d6c-6c1b-40be-be3d-29f12f06972a">
+					<printWhenExpression><![CDATA[$V{code_ex_COUNT}<2]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{code_ex}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement positionType="FixRelativeToBottom" x="400" y="0" width="66" height="16" uuid="a2f95b0c-7b78-48d7-8753-4f8b4a0820fc"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="11"/>
+					<paragraph rightIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{price_exdt}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="0" width="1" height="17" uuid="f2ae8914-e942-4f3a-ae29-115f0f3c2a37"/>
+			</line>
+			<line>
+				<reportElement x="22" y="0" width="1" height="16" uuid="ce6880a4-ff34-49e4-9b97-c845a1edfbaf"/>
+			</line>
+			<line>
+				<reportElement x="162" y="0" width="1" height="17" uuid="233da04d-cf3b-48a6-9621-123d8ffffeea"/>
+			</line>
+			<line>
+				<reportElement x="554" y="0" width="1" height="16" uuid="731b9364-6812-4fd0-95dd-590e7eed5071"/>
+			</line>
+			<textField pattern="#,##0" isBlankWhenNull="false">
+				<reportElement positionType="FixRelativeToBottom" x="467" y="0" width="87" height="16" uuid="c0d78049-44a1-48ea-9979-525799c3acdf"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="11"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{monetize_exdt}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="331" y="0" width="1" height="16" uuid="627e1832-91d0-4e78-8020-eba3145048fc"/>
+			</line>
+			<line>
+				<reportElement x="397" y="0" width="1" height="16" uuid="2e8187f5-df8a-4d23-8d7d-cd3562b519d9"/>
+			</line>
+			<line>
+				<reportElement x="466" y="0" width="1" height="17" uuid="aaa39fad-3161-4528-8325-bc2223e83d52"/>
+			</line>
+			<line>
+				<reportElement x="96" y="-1" width="1" height="17" uuid="ecf9150b-2b0b-4113-a59c-8d97f95ae2f0"/>
+			</line>
+			<textField>
+				<reportElement x="102" y="0" width="60" height="16" uuid="0758f0a7-6a47-4a0b-8d03-3d98a70f73ea">
+					<printWhenExpression><![CDATA[$V{code_ex_COUNT}<2]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{date_ex}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="100" splitType="Stretch">
+			<staticText>
+				<reportElement x="375" y="34" width="100" height="20" uuid="6ef49aa5-e02a-4b61-bf86-6f8adc6342e7"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Thủ trưởng đơn vị]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="331" y="14" width="223" height="20" uuid="62ba3cd2-09e7-4c62-97fe-09699ac8b6fd"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[.................., ngày.......tháng ...... năm 20.....]]></text>
+			</staticText>
+			<line>
+				<reportElement x="1" y="0" width="554" height="1" uuid="57f5dc4d-08e3-4ab2-a915-2dcd235e16a1"/>
+				<graphicElement>
+					<pen lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="29" y="34" width="151" height="20" uuid="f904a103-c562-421d-9323-b0cd7702af99"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Người lập biểu]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<line>
+				<reportElement x="1" y="0" width="554" height="1" uuid="9c076450-a1f9-4a1f-a003-7cfb72f23962"/>
+			</line>
+			<textField>
+				<reportElement x="455" y="0" width="100" height="20" uuid="4df943f2-5905-4aec-a494-93e492947b82"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER} +" of " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="0" width="136" height="20" uuid="f0ded620-1462-4004-a0ce-b4e3c55980f1"/>
+				<textElement verticalAlignment="Bottom"/>
+				<text><![CDATA[www.anthaiphusteel.com]]></text>
+			</staticText>
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement x="206" y="0" width="127" height="20" uuid="39688ba7-ed45-4f83-a0d7-02198d341499"/>
+				<textElement verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="54" splitType="Stretch">
+			<textField pattern="#,##0">
+				<reportElement x="349" y="32" width="203" height="16" uuid="ee460c01-0a59-46e2-b6de-336035242a89"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sum_total}+(0.1*$V{sum_total})]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="2" y="0" width="204" height="16" uuid="6449e712-746f-4398-8c50-7bdc1c6944dd"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tổng :]]></text>
+			</staticText>
+			<textField pattern="#,##0">
+				<reportElement x="411" y="0" width="141" height="16" uuid="83e25924-d0ae-4986-a39e-9701ccf3095e"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sum_total}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="2" y="32" width="204" height="16" uuid="ff060179-b501-4684-88b4-9e96f4e35383"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tổng thanh toán (vnđ) :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="16" width="100" height="16" uuid="431039b5-ac00-4f61-8d69-c3cc0b9c49bc"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Thuế GTGT (10%)]]></text>
+			</staticText>
+			<textField pattern="#,##0">
+				<reportElement x="452" y="16" width="100" height="16" uuid="2b7fe5d2-8129-4da9-90ef-9b3fdcfc3b4d"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sum_total}*0.1]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

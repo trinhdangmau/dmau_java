@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="export_print" language="groovy" pageWidth="595" pageHeight="425" columnWidth="527" leftMargin="34" rightMargin="34" topMargin="0" bottomMargin="0" uuid="b5f38408-f499-45c5-9a50-f7f32577c151">
+	<property name="ireport.zoom" value="3.6300000000000145"/>
+	<property name="ireport.x" value="39"/>
+	<property name="ireport.y" value="32"/>
+	<queryString>
+		<![CDATA[SELECT * FROM export
+LEFT JOIN export_detail ON code_ex = code_ex_exdt
+LEFT JOIN customer ON code_cust = code_cust_ex
+LEFT JOIN product_information ON export_detail.code_prod_exdt = product_information.code_prod
+WHERE code_ex = "EX150100001"]]>
+	</queryString>
+	<field name="code_ex" class="java.lang.Object"/>
+	<field name="code_cust_ex" class="java.lang.Object"/>
+	<field name="date_ex" class="java.lang.Object"/>
+	<field name="tax_ex" class="java.lang.Object"/>
+	<field name="total_ex" class="java.lang.Object"/>
+	<field name="paid_ex" class="java.lang.Object"/>
+	<field name="own_ex" class="java.lang.Object"/>
+	<field name="total_text_ex" class="java.lang.Object"/>
+	<field name="code_empl_ex" class="java.lang.Object"/>
+	<field name="note_ex" class="java.lang.Object"/>
+	<field name="user_ex" class="java.lang.Object"/>
+	<field name="code_exdt" class="java.lang.Object"/>
+	<field name="code_ex_exdt" class="java.lang.Object"/>
+	<field name="code_prod_exdt" class="java.lang.Object"/>
+	<field name="specification_exdt" class="java.lang.Object"/>
+	<field name="no_exdt" class="java.lang.Object"/>
+	<field name="weight_exdt" class="java.lang.Object"/>
+	<field name="unit_exdt" class="java.lang.Object"/>
+	<field name="price_exdt" class="java.lang.Object"/>
+	<field name="monetize_exdt" class="java.lang.Object"/>
+	<field name="user_exdt" class="java.lang.Object"/>
+	<field name="code_cust" class="java.lang.Object"/>
+	<field name="name_cust" class="java.lang.Object"/>
+	<field name="add_cust" class="java.lang.Object"/>
+	<field name="district_cust" class="java.lang.Object"/>
+	<field name="province_cust" class="java.lang.Object"/>
+	<field name="company_cust" class="java.lang.Object"/>
+	<field name="phone_cust" class="java.lang.Object"/>
+	<field name="fax_cust" class="java.lang.Object"/>
+	<field name="email_cust" class="java.lang.Object"/>
+	<field name="note_cust" class="java.lang.Object"/>
+	<field name="user_cust" class="java.lang.Object"/>
+	<field name="code_prod" class="java.lang.Object"/>
+	<field name="name_prod" class="java.lang.Object"/>
+	<field name="original_prod" class="java.lang.Object"/>
+	<field name="unit_prod" class="java.lang.Object"/>
+	<field name="descript_prod" class="java.lang.Object"/>
+	<field name="price_prod" class="java.lang.Object"/>
+	<field name="note_prod" class="java.lang.Object"/>
+	<field name="user_prod" class="java.lang.Object"/>
+	<variable name="sum_total" class="java.lang.Number" calculation="Sum">
+		<variableExpression><![CDATA[$F{monetize_exdt}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="14" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="56" splitType="Stretch">
+			<textField>
+				<reportElement x="391" y="4" width="100" height="20" uuid="e4721a90-a112-4991-90d5-b73d204cae94"/>
+				<textElement verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[""+$F{code_ex}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="108" y="29" width="100" height="20" uuid="5ca6196e-d648-47c9-8fbc-8029e10019dc"/>
+				<textElement verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[""+$F{name_cust}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="460" y="30" width="48" height="20" uuid="de07db03-309f-46e3-916f-aaf119324a78"/>
+				<textElement verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$F{date_ex}.substring(0,4)]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="30" width="40" height="20" uuid="9849e7a7-b8ad-41f5-b205-6b358d634ace"/>
+				<textElement verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$F{date_ex}.substring(5,7)]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="340" y="30" width="48" height="20" uuid="ee3d0a92-2fc6-4ed8-9af7-128b8cf39298"/>
+				<textElement verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$F{date_ex}.substring(8,10)]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="28" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="41" y="2" width="55" height="16" uuid="78efb46a-d557-4370-82e2-d5a7c4190423"/>
+				<textElement verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[""+$F{name_prod}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="102" y="2" width="152" height="16" uuid="62846c61-ab6b-438e-8c65-ae6d6c31881d"/>
+				<textElement verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[""+$F{specification_exdt}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="254" y="2" width="44" height="16" uuid="cf74a435-c009-4002-8ef6-d34c5d83a722"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[""+$F{no_exdt}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="302" y="2" width="50" height="16" uuid="9450e4f5-ae07-4629-a377-7f2301630741"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[""+$F{weight_exdt}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement x="354" y="2" width="60" height="16" uuid="7521f1d4-7bc3-4092-b44b-473c1ec35f67"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$F{price_exdt}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement x="414" y="2" width="94" height="16" uuid="1f5c5285-0b28-46e1-bb0a-8753045285c4"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$F{monetize_exdt}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="13" y="2" width="23" height="16" uuid="c8e51fce-5926-44cf-aa40-307878df2af0"/>
+				<textElement verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="30" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="117" splitType="Stretch">
+			<textField pattern="#,##0">
+				<reportElement x="414" y="0" width="94" height="17" uuid="4f0deee3-3341-4996-9f8c-b094af8e4b8d"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sum_total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>
